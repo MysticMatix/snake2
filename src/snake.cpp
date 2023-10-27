@@ -101,8 +101,8 @@ void Snake::update(){
 }
 
 void Snake::render(){
-    if(eating){
-        if((int)progress%6<4) return;
+    if(eating > 0){
+        if((int)progress%12<6) return;
     }
     renderTail();
     renderBody();
@@ -122,7 +122,7 @@ void Snake::tryChangeHeadDir(Direction* dir){
 }
 
 void Snake::eat(){
-    eating = true;
+    eating = 2;
 }
 
 void Snake::move(){
@@ -139,9 +139,12 @@ void Snake::move(){
     head->originalDirection = head->direction;
     head->directionChanged = false;
 
-    if(eating){
-        eating = false;
+    if(eating == 2){
+        eating--;
         return;
+    }
+    else if(eating == 1){
+        eating--;
     }
 
     gameboard[tail->coordinates->y * BOARD_WIDTH + tail->coordinates->x] = TileState::EMPTY;

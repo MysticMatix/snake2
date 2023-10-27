@@ -62,7 +62,7 @@ class Snake: public GameObject{
 
         int progress;
         
-        bool eating;
+        int eating;
 
         void move();
 
