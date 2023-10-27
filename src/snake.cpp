@@ -16,6 +16,7 @@ Snake::Snake(SDL_Texture* headTexture, SDL_Texture* bodyTexture, SDL_Texture* ta
     this->wtailTexture = wtailTexture;
 
     this->progress = 0;
+    this->eating = 0;
 
     head = new SnakeHead();
     head->coordinates = new SDL_Point{x, y};
