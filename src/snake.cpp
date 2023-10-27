@@ -6,10 +6,14 @@
 
 const int moveTime = FPS/2;
 
-Snake::Snake(SDL_Texture* headTexture, SDL_Texture* bodyTexture, SDL_Texture* tailTexture, int x, int y, Direction* dir, int length, TileState* gameboard){
+Snake::Snake(SDL_Texture* headTexture, SDL_Texture* bodyTexture, SDL_Texture* tailTexture, SDL_Texture* wheadTexture, SDL_Texture* wbodyTexture, SDL_Texture* wtailTexture, int x, int y, Direction* dir, int length, TileState* gameboard){
     this->headTexture = headTexture;
     this->bodyTexture = bodyTexture;
     this->tailTexture = tailTexture;
+
+    this->wheadTexture = wheadTexture;
+    this->wbodyTexture = wbodyTexture;
+    this->wtailTexture = wtailTexture;
 
     this->progress = 0;
 
@@ -59,8 +63,8 @@ Snake::Snake(SDL_Texture* headTexture, SDL_Texture* bodyTexture, SDL_Texture* ta
     this->gameboard = gameboard;
 }
 
-Snake::Snake(const char* headTexture, const char* bodyTexture, const char* tailTexture, int x, int y, Direction* dir, int length, TileState* gameboard):
-Snake(TextureManager::LoadTexture(headTexture), TextureManager::LoadTexture(bodyTexture), TextureManager::LoadTexture(tailTexture), x, y, dir, length, gameboard){
+Snake::Snake(const char* headTexture, const char* bodyTexture, const char* tailTexture, const char* wheadTexture, const char* wbodyTexture, const char* wtailTexture, int x, int y, Direction* dir, int length, TileState* gameboard):
+Snake(TextureManager::LoadTexture(headTexture), TextureManager::LoadTexture(bodyTexture), TextureManager::LoadTexture(tailTexture), TextureManager::LoadTexture(wheadTexture), TextureManager::LoadTexture(wbodyTexture), TextureManager::LoadTexture(wtailTexture), x, y, dir, length, gameboard){
 
 }
 

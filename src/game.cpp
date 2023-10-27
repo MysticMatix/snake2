@@ -72,10 +72,10 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         food2 = new Food(TextureManager::LoadTexture("assets/food2.png"), 0, 0, gameBoard);
         gameObjects.push_back(food2);
 
-        snake1 = new Snake("assets/head1.png", "assets/body1.png", "assets/tail1.png", 3, 3, new Direction(Direction::DOWN), 0, gameBoard);
+        snake1 = new Snake("assets/head1.png", "assets/body1.png", "assets/tail1.png", "assets/head-white.png", "assets/body-white.png", "assets/tail-white.png", 3, 3, new Direction(Direction::DOWN), 0, gameBoard);
         gameObjects.push_back(snake1);
 
-        snake2 = new Snake("assets/head2.png", "assets/body2.png", "assets/tail2.png", 11, 3, new Direction(Direction::DOWN), 0, gameBoard);
+        snake2 = new Snake("assets/head2.png", "assets/body2.png", "assets/tail2.png", "assets/head-white.png", "assets/body-white.png", "assets/tail-white.png", 11, 3, new Direction(Direction::DOWN), 0, gameBoard);
         gameObjects.push_back(snake2);
 
         score = 0;
@@ -245,10 +245,10 @@ void Game::restart(){
     food2 = new Food(TextureManager::LoadTexture("assets/food2.png"), 0, 0, gameBoard);
     gameObjects.push_back(food2);
 
-    snake1 = new Snake("assets/head1.png", "assets/body1.png", "assets/tail1.png", 3, 3, new Direction(Direction::DOWN), 0, gameBoard);
+    snake1 = new Snake("assets/head1.png", "assets/body1.png", "assets/tail1.png", "assets/head-white.png", "assets/body-white.png", "assets/tail-white.png", 3, 3, new Direction(Direction::DOWN), 0, gameBoard);
     gameObjects.push_back(snake1);
 
-    snake2 = new Snake("assets/head2.png", "assets/body2.png", "assets/tail2.png", 11, 3, new Direction(Direction::DOWN), 0, gameBoard);
+    snake2 = new Snake("assets/head2.png", "assets/body2.png", "assets/tail2.png", "assets/head-white.png", "assets/body-white.png", "assets/tail-white.png", 11, 3, new Direction(Direction::DOWN), 0, gameBoard);
     gameObjects.push_back(snake2);
 
     score = 0;

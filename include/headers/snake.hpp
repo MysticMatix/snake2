@@ -39,8 +39,8 @@ class SnakeTail{
 
 class Snake: public GameObject{
     public:
-        Snake(SDL_Texture* headTexture, SDL_Texture* bodyTexture, SDL_Texture* tailTexture, int x, int y, Direction* dir, int length, TileState* gameboard);
-        Snake(const char* headTexture, const char* bodyTexture, const char* tailTexture, int x, int y, Direction* dir, int length, TileState* gameboard);
+        Snake(SDL_Texture* headTexture, SDL_Texture* bodyTexture, SDL_Texture* tailTexture, SDL_Texture* wheadTexture, SDL_Texture* wbodyTexture, SDL_Texture* wtailTexture, int x, int y, Direction* dir, int length, TileState* gameboard);
+        Snake(const char* headTexture, const char* bodyTexture, const char* tailTexture, const char* wheadTexture, const char* wbodyTexture, const char* wtailTexture,int x, int y, Direction* dir, int length, TileState* gameboard);
         ~Snake();
 
         void update();
@@ -53,6 +53,7 @@ class Snake: public GameObject{
         SDL_Point* getHeadCoordinates();
     private:
         SDL_Texture *headTexture, *bodyTexture, *tailTexture;
+        SDL_Texture *wheadTexture, *wbodyTexture, *wtailTexture;
 
         SnakeHead* head;
         std::list<SnakeTile*> tiles;
