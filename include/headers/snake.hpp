@@ -67,9 +67,9 @@ class Snake: public GameObject{
 
         void move();
 
-        void renderHead();
-        void renderBody();
-        void renderTail();
+        void renderHead(bool white);
+        void renderBody(bool white);
+        void renderTail(bool white);
 };
 
 #endif

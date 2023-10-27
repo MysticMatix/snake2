@@ -106,11 +106,16 @@ void Snake::update(){
 
 void Snake::render(){
     if(eating > 0){
-        if((int)progress%12<6) return;
+        if((int)progress%12<6){
+                renderTail(true);
+                renderBody(true);
+                renderHead(true);
+            return;
+        }
     }
-    renderTail();
-    renderBody();
-    renderHead();
+    renderTail(false);
+    renderBody(false);
+    renderHead(false);
 }
 
 void Snake::tryChangeHeadDir(Direction* dir){
@@ -160,7 +165,7 @@ void Snake::move(){
     tiles.pop_front();
 }
 
-void Snake::renderHead(){
+void Snake::renderHead(bool white){
     SDL_Rect sourceRectangle;
     SDL_Rect destinationRectangle;
 
@@ -174,8 +179,9 @@ void Snake::renderHead(){
         destinationRectangle.y = head->coordinates->y * TILE_SIZE;
         destinationRectangle.w = TILE_SIZE;
         destinationRectangle.h = TILE_SIZE;
-
-        TextureManager::Draw(this->headTexture, sourceRectangle, destinationRectangle, SDL_FLIP_NONE, (int)*head->originalDirection);
+        
+        if(white) TextureManager::Draw(this->wheadTexture, sourceRectangle, destinationRectangle, SDL_FLIP_NONE, (int)*head->originalDirection);
+        else TextureManager::Draw(this->headTexture, sourceRectangle, destinationRectangle, SDL_FLIP_NONE, (int)*head->originalDirection);
     }
 
     sourceRectangle.x = 0;
@@ -203,10 +209,11 @@ void Snake::renderHead(){
             break;
     }
 
-    TextureManager::Draw(this->headTexture, sourceRectangle, destinationRectangle, SDL_FLIP_NONE, head->angle);
+    if(white) TextureManager::Draw(this->wheadTexture, sourceRectangle, destinationRectangle, SDL_FLIP_NONE, head->angle);
+    else TextureManager::Draw(this->headTexture, sourceRectangle, destinationRectangle, SDL_FLIP_NONE, head->angle);
 }
 
-void Snake::renderBody(){
+void Snake::renderBody(bool white){
 
     SDL_Rect sourceRectangle;
     sourceRectangle.y = 0;
@@ -324,13 +331,14 @@ void Snake::renderBody(){
             }
         }
 
-        TextureManager::Draw(this->bodyTexture, sourceRectangle, destinationRectangle, SDL_FLIP_NONE, angle);
+        if(white) TextureManager::Draw(this->wbodyTexture, sourceRectangle, destinationRectangle, SDL_FLIP_NONE, angle);
+        else TextureManager::Draw(this->bodyTexture, sourceRectangle, destinationRectangle, SDL_FLIP_NONE, angle);
 
         prev = current;
     }
 }
 
-void Snake::renderTail(){
+void Snake::renderTail(bool white){
     SDL_Rect sourceRectangle;
     sourceRectangle.x = 0;
     sourceRectangle.y = 0;
@@ -364,7 +372,8 @@ void Snake::renderTail(){
             break;
     }
 
-    TextureManager::Draw(this->tailTexture, sourceRectangle, destinationRectangle, SDL_FLIP_NONE, angle);
+    if(white) TextureManager::Draw(this->wtailTexture, sourceRectangle, destinationRectangle, SDL_FLIP_NONE, angle);
+    else TextureManager::Draw(this->tailTexture, sourceRectangle, destinationRectangle, SDL_FLIP_NONE, angle);
 }
 
 SDL_Point *Snake::getHeadCoordinates(){
