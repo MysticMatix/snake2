@@ -14,7 +14,7 @@ const int WINDOW_HEIGHT = 768;
 const int BOARD_WIDTH = 15;
 const int BOARD_HEIGHT = 12;
 const int TILE_SIZE = 64;
-const int FPS = 30;
+const int FPS = 60;
 
 std::list<GameObject*> gameObjects;
 
@@ -138,7 +138,7 @@ void Game::handleEvents(){
 }
 
 void Game::update(){
-    SDL_SetWindowTitle(window, ("Score: " + std::to_string(score)).c_str());
+    if(state != GameState::FINISH) SDL_SetWindowTitle(window, ("Score: " + std::to_string(score)).c_str());
 
     if(state != GameState::PLAY) return;
     for(auto gameObject : gameObjects){
