@@ -105,8 +105,8 @@ void Snake::update(){
 }
 
 void Snake::render(){
-    if(eating > 0){
-        if((int)progress%12<6){
+    if(this->eating > 0){
+        if((int)progress<moveTime/2){
                 renderTail(true);
                 renderBody(true);
                 renderHead(true);
