@@ -198,11 +198,19 @@ void Game::update(){
     if(foodTurn){
         if(!food2->isActive()){
             food2->spawn();
+            while((food2->getX() == snake1->getHeadCoordinates()->x && food2->getY() == snake1->getHeadCoordinates()->y) || (food2->getX() == snake2->getHeadCoordinates()->x && food2->getY() == snake2->getHeadCoordinates()->y)){
+                food2->despawn();
+                food2->spawn();
+            }
         }
     }
     else{
         if(!food1->isActive()){
             food1->spawn();
+            while((food1->getX() == snake1->getHeadCoordinates()->x && food1->getY() == snake1->getHeadCoordinates()->y) || (food1->getX() == snake2->getHeadCoordinates()->x && food1->getY() == snake2->getHeadCoordinates()->y)){
+                food1->despawn();
+                food1->spawn();
+            }
         }
     }
 }
